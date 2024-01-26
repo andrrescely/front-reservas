@@ -1,0 +1,26 @@
+<mat-sidenav-container class="example-container">
+  <mat-sidenav-content class="content mat-elevation-z8">
+    <div class="login-form">
+      <img class="avatar logo mat-elevation-z8" src="http://img2.wikia.nocookie.net/__cb20121213190530/adventuretimewithfinnandjake/images/8/82/Piq_21633_400x400.png">
+      <div class="mat-2">
+        <mat-form-field>
+          <mat-label>example@gmail.com</mat-label>
+          <input matInput type="email" id="contrasena" class="form-control "
+          >
+          
+        </mat-form-field>
+      </div>
+      <div class="mat-2">
+        <mat-form-field>
+          <mat-label>Contraseña</mat-label>
+          <input matInput type="password" id="contrasena" class="form-control" formControlName="contrasena" required>
+        </mat-form-field>
+      </div>
+      <div class="mat-2">
+        <div fxLayout="row" fxLayoutAlign="center">
+          <button mat-raised-button color="primary"(click)="login();">Login</button>
+        </div>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,18 @@
+<div>
+  <h2>Crear Nueva Finca</h2>
+
+  <form [formGroup]="fincaForm" (ngSubmit)="onSubmit()">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" formControlName="nombre">
+
+    <label for="imagen">URL de la Imagen:</label>
+    <input type="text" id="imagen" formControlName="imagen">
+
+    <label for="descripcion">Descripción:</label>
+    <textarea id="descripcion" formControlName="descripcion"></textarea>
+
+    <!-- Agrega otros campos según tus necesidades -->
+
+    <button type="submit">Crear Finca</button>
+  </form>
+</div>
