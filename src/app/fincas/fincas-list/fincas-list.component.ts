@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
+import { ReservaDialogComponent } from 'src/app/reserva-dialog/reserva-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-fincas-list',
@@ -108,7 +110,7 @@ export class FincasListComponent {
   maxPagesToShow = 20;
   paginatedFincas: any[] = [];
 
-  constructor() {
+  constructor(private dialog: MatDialog) {
     this.updatePaginatedFincas();
   }
 
@@ -134,7 +136,20 @@ export class FincasListComponent {
   }
 
   alquilarFinca(finca: any) {
-    // Lógica para alquilar la finca
-    console.log(`Alquilando ${finca.nombre}`);
+    const dialogRef = this.dialog.open(ReservaDialogComponent, {
+      width: '400px',
+      height: '400px',
+      data: { fincaInfo: finca },
+      disableClose: true,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        console.log('Reserva realizada por ${result.nombre} para ${finca.nombre}');
+        // Puedes realizar acciones adicionales si es necesario
+      } else {
+        console.log('Reserva cancelada');
+      }
+    });
   }
 }
