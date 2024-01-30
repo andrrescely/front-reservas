@@ -4,15 +4,13 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
-  styleUrls: ['./auth.component.scss']
+  styleUrls: ['./auth.component.scss'],
 })
 export class AuthComponent {
-  
-  constructor(private router: Router){}
+  constructor(private router: Router) {}
 
-  login(){
+  login() {
     this.router.navigateByUrl('/dashboard/fincas/fincas');
-
   }
-
+  
 }

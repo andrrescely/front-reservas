@@ -1,6 +1,8 @@
 import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-pages',
   templateUrl: './pages.component.html',
@@ -12,7 +14,8 @@ export class PagesComponent {
 
   constructor(
     private observer: BreakpointObserver,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private router: Router
   ) {}
   ngAfterViewInit() {
     this,
@@ -26,5 +29,8 @@ export class PagesComponent {
         }
       });
     this.cd.detectChanges();
+  }
+  logout() {
+    this.router.navigate(['/login']);
   }
 }
