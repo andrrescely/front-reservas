@@ -11,7 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReservaDialogComponent } from './reserva-dialog/reserva-dialog.component';
 import { BoldInfoDirective } from './bold-info.directive';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -21,7 +21,6 @@ import { BoldInfoDirective } from './bold-info.directive';
     ReservaDialogComponent,
     ReservaDialogComponent,
     BoldInfoDirective,
-    
   ],
   imports: [
     BrowserModule,
@@ -32,6 +31,7 @@ import { BoldInfoDirective } from './bold-info.directive';
     AuthModule,
     MatDialogModule,
     ReactiveFormsModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-reserva-dialog',
@@ -8,26 +9,27 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./reserva-dialog.component.scss'],
 })
 export class ReservaDialogComponent {
-  nombre: string = '';
   fincaForm: FormGroup;
   reservaForm: FormGroup;
 
   constructor(
     public dialogRef: MatDialogRef<ReservaDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private snackBar: MatSnackBar
   ) {
     this.fincaForm = this.fb.group({
       nombre: ['', Validators.required],
       imagen: ['', Validators.required],
       descripcion: [''],
+      
     });
 
-    // Inicializa el nuevo formulario
     this.reservaForm = this.fb.group({
       nombreCliente: ['', Validators.required],
       telefonoCliente: ['', Validators.required],
       fechaReserva: ['', Validators.required],
+      
     });
   }
 
@@ -36,11 +38,23 @@ export class ReservaDialogComponent {
   }
 
   onReservarClick(): void {
-    this.dialogRef.close({
-      nombre: this.nombre,
-      fincaFormValue: this.fincaForm.value,
-      reservaFormValue: this.reservaForm.value,
-    });
+    if (this.fincaForm.valid && this.reservaForm.valid) {
+      const nombreFinca = this.data.fincaFormValue.nombre;
+
+      const reservaData = {
+        nombre: nombreFinca,
+        fincaFormValue: this.data.fincaFormValue,
+        reservaFormValue: this.reservaForm.value,
+      };
+      // Realiza más acciones  antes de cerrar el cuadro de diálogo
+      console.log('Datos de reserva:', reservaData);
+      
+      this.snackBar.open('¡Reserva exitosa!', 'Cerrar', {
+        duration: 3000, // Duración en milisegundos 
+      });
+
+      this.dialogRef.close(reservaData);
+    }
   }
 
   onSubmit(): void {
@@ -49,7 +63,6 @@ export class ReservaDialogComponent {
     }
   }
 
-  // Método para manejar la lógica cuando se envía el formulario de reserva
   onSubmitReserva(): void {
     if (this.reservaForm.valid) {
       console.log('Formulario Reserva enviado:', this.reservaForm.value);

@@ -7,10 +7,10 @@
     <div class="scroll-container">
       <ng-container *ngFor="let page of paginatedFincas">
         <div class="card-container">
-          <mat-card *ngFor="let finca of page" class="fincas-card">
+          <mat-card *ngFor="let finca of page" class="fincas-card" [ngClass]="{ 'clase-elegante': finca.claseNombre, 'clase-normal': finca.claseDescripcion }">
             <img mat-card-image [src]="finca.imagen" alt="{{ finca.nombre }}" style="max-width: 100%; max-height: 100%;">
             <mat-card-content>
-              <h3>{{ finca.nombre }}</h3>
+              <h3 [ngClass]="{ 'clase-elegante': finca.claseNombre, 'clase-normal': finca.claseDescripcion }">{{ finca.nombre }}</h3>
               <p class="descripcion-fincas">{{ finca.descripcion }}</p>
             </mat-card-content>
             <mat-card-actions>
@@ -20,8 +20,7 @@
         </div>
       </ng-container>
       <mat-paginator [pageSize]="pageSize" [length]="fincas.length" (page)="onPageChange($event)">
-    </mat-paginator>
+      </mat-paginator>
     </div>
-    
   </mat-sidenav-content>
 </mat-sidenav-container>

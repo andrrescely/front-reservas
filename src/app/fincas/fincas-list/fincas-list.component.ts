@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
+
+
 import { PageEvent } from '@angular/material/paginator';
 import { ReservaDialogComponent } from 'src/app/reserva-dialog/reserva-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -112,7 +114,7 @@ export class FincasListComponent {
   maxPagesToShow = 20;
   paginatedFincas: any[] = [];
 
-  constructor(private dialog: MatDialog) {
+  constructor(private dialog: MatDialog, private renderer: Renderer2) {
     this.updatePaginatedFincas();
   }
 
