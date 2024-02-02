@@ -8,23 +8,26 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ReservationService {
-  private baseUrl = 'URL_DEL_BACKEND'; //  URL DEL BACKEND
+  private apiUrl = 'URL_DEL_BACKEND'; //  URL DE MI BACKEND
 
   constructor(private http: HttpClient) {}
 
   createReservation(data: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/reservations`, data);
+    return this.http.post(`${this.apiUrl}/reservations`, data);
+  }
+  obtenerReservas(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/reservas`);
   }
 
   getReservations(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/reservations`);
+    return this.http.get(`${this.apiUrl}/reservations`);
   }
 
   deleteReservation(id: string): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/reservations/${id}`);
+    return this.http.delete(`${this.apiUrl}/reservations/${id}`);
   }
 
   updateReservation(id: string, data: any): Observable<any> {
-    return this.http.put(`${this.baseUrl}/reservations/${id}`, data);
+    return this.http.put(`${this.apiUrl}/reservations/${id}`, data);
   }
 }

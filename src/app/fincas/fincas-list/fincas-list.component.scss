@@ -13,7 +13,8 @@ mat-toolbar{
    margin-left: 32px;
    display: flex;
    font-size: 2rem;
-   color: lightgray;
+   color: rgb(7, 2, 2);
+   
 
 }
 
@@ -53,4 +54,20 @@ mat-toolbar{
   margin-top: 16px;
   justify-content: center;
 }
+
+
+.fincas-card h3 {
+  font-family: 'Tu-Fuente-Elegante', sans-serif; 
+  font-weight: bold;
+  color: #333; 
+  
+}
+
+
+.fincas-card .descripcion-fincas {
+  font-family: 'Otra-Fuente', sans-serif; 
+  color: #666; 
+  
+}
+
 

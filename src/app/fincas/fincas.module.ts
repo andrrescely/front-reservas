@@ -11,6 +11,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSidenavModule } from '@angular/material/sidenav';
 
+
 @NgModule({
   declarations: [
     FincasCreateComponent,

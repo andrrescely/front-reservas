@@ -10,12 +10,19 @@ import { AuthModule } from './auth/auth.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReservaDialogComponent } from './reserva-dialog/reserva-dialog.component';
+import { BoldInfoDirective } from './bold-info.directive';
 
 
 
 
 @NgModule({
-  declarations: [AppComponent, ReservaDialogComponent, ReservaDialogComponent],
+  declarations: [
+    AppComponent,
+    ReservaDialogComponent,
+    ReservaDialogComponent,
+    BoldInfoDirective,
+    
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

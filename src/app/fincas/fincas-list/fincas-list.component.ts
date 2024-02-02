@@ -15,6 +15,8 @@ export class FincasListComponent {
       imagen:
         'https://tse2.mm.bing.net/th?id=OIP.UHT953tM4lh-zUuNoy6-8QHaFj&pid=Api&P=0&h=180',
       descripcion: 'Ubicación: Villa de Leyva, Boyacá',
+      claseNombre: 'clase-elegante',
+      claseDescripcion: 'clase-normal',
     },
     {
       nombre: 'Hacienda El Paraíso',
@@ -145,7 +147,9 @@ export class FincasListComponent {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        console.log('Reserva realizada por ${result.nombre} para ${finca.nombre}');
+        console.log(
+          'Reserva realizada por ${result.nombre} para ${finca.nombre}'
+        );
         // Puedes realizar acciones adicionales si es necesario
       } else {
         console.log('Reserva cancelada');
