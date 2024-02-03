@@ -1,6 +1,6 @@
 import { Component, Renderer2 } from '@angular/core';
 
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { PageEvent } from '@angular/material/paginator';
 import { ReservaDialogComponent } from 'src/app/reserva-dialog/reserva-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -114,7 +114,11 @@ export class FincasListComponent {
   maxPagesToShow = 20;
   paginatedFincas: any[] = [];
 
-  constructor(private dialog: MatDialog, private renderer: Renderer2) {
+  constructor(
+    private dialog: MatDialog,
+    private renderer: Renderer2,
+    private snackBar: MatSnackBar
+  ) {
     this.updatePaginatedFincas();
   }
 
@@ -149,13 +153,25 @@ export class FincasListComponent {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
+        this.actualizarReserva(result);
         console.log(
-          'Reserva realizada por ${result.nombre} para ${finca.nombre}'
+          `Reserva realizada por ${result.nombre} para ${finca.nombre}`
         );
-        // Puedes realizar acciones adicionales si es necesario
+
+        // Mostrar el Snackbar desde aquí
+        this.mostrarSnackBar();
       } else {
-        console.log('Reserva cancelada');
+        console.log('Modal de reserva cerrado');
       }
     });
+  }
+
+  mostrarSnackBar(): void {
+    this.snackBar.open('¡Reserva exitosa!', 'Cerrar', {
+      duration: 3000,
+    });
+  }
+  actualizarReserva(result: any) {
+    console.log('reserva actualizada');
   }
 }

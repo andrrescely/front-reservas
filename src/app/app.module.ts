@@ -12,8 +12,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ReservaDialogComponent } from './reserva-dialog/reserva-dialog.component';
 import { BoldInfoDirective } from './bold-info.directive';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
-
+ import { ReservationsService } from './services/reservation.service';
+import { FincasService } from './fincas/fincas.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -32,8 +33,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatDialogModule,
     ReactiveFormsModule,
     MatSnackBarModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [ReservationsService, FincasService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
