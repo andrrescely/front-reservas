@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 
 
+
 @NgModule({
   declarations: [PagesComponent],
   imports: [
@@ -23,6 +24,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatDividerModule,
     MatButtonModule,
     MatDatepickerModule,
+    
   ],
 })
 export class PagesModule {}

@@ -17,6 +17,10 @@
         <label for="fechaReserva">Fecha de Reserva:</label>
         <input type="date" id="fechaReserva" formControlName="fechaReserva" required>
       </div>
+      <div class="form-group">
+        <label for="horaReserva">Hora de tu reserva</label>
+        <input type="time" id="horaReserva" formControlName="horaReserva" required>
+      </div>
 
       <div class="button-container">
         <button type="submit" [disabled]="!reservaForm.valid">Reservarrrr</button>

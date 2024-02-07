@@ -15,6 +15,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
  import { ReservationsService } from './services/reservation.service';
 import { FincasService } from './fincas/fincas.service';
 import { HttpClientModule } from '@angular/common/http';
+import { DateFormatPipe } from './date-format.pipe';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReservaDialogComponent,
     ReservaDialogComponent,
     BoldInfoDirective,
+    DateFormatPipe,
   ],
   imports: [
     BrowserModule,

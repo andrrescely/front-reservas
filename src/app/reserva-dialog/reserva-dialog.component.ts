@@ -12,6 +12,7 @@ import { ReservationsService } from '../services/reservation.service';
 export class ReservaDialogComponent {
   fincaForm: FormGroup;
   reservaForm: FormGroup;
+  fechaReserva: Date = new Date();
 
   constructor(
     public dialogRef: MatDialogRef<ReservaDialogComponent>,
@@ -19,6 +20,7 @@ export class ReservaDialogComponent {
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
     private ReservationsService: ReservationsService
+    
   ) {
     this.fincaForm = this.fb.group({
       nombre: ['', Validators.required],
@@ -30,6 +32,7 @@ export class ReservaDialogComponent {
       nombreCliente: ['', Validators.required],
       telefonoCliente: ['', Validators.required],
       fechaReserva: ['', Validators.required],
+      horaReserva: ['', Validators.required],
     });
   }
 
@@ -71,7 +74,17 @@ export class ReservaDialogComponent {
 
   onSubmitReserva(): void {
     if (this.reservaForm.valid) {
-      console.log('Formulario Reserva enviado:', this.reservaForm.value);
+      const reservaData = this.reservaForm.value;
+      // Formatear la fecha y la hora
+      const fechaReservaFormateada = new Date(
+        reservaData.fechaReserva
+      ).toLocaleString('es-CO', { timeZone: 'UTC' });
+
+      console.log('Formulario Reserva enviado:', {
+        ...reservaData,
+        fechaReserva: fechaReservaFormateada,
+      });
+
       //esto me cierra el modal
       this.dialogRef.close();
       //esto me muestr aun mensaje de agradecimiento
@@ -80,8 +93,8 @@ export class ReservaDialogComponent {
     }
   }
   mostrarAgradecimientoSnackBar(): void {
-  this.snackBar.open('¡Gracias por su reserva!', 'Cerrar', {
-    duration: 3000,
-  });
-}
+    this.snackBar.open('¡Gracias por su reserva!', 'Cerrar', {
+      duration: 3000,
+    });
+  }
 }
