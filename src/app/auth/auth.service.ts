@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { tap } from 'rxjs';
+import { Observable, of, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  constructor() {}
+  /*constructor(private http: HttpClient) {}
   // Método para verificar si el usuario está autenticado
   isAuthenticated(): boolean {
     // Verifica si existe un token en el almacenamiento local
@@ -16,40 +17,41 @@ export class AuthService {
   }
 
   // Método para realizar el inicio de sesión
-  login(credentials: any): void {
+  login(credentials: any) {
     // URL del backend donde se encuentra el endpoint de login
-    const backendUrl = 'http://localhost:3000/login';
+    const backendUrl = 'http://localhost:3000/login'; //CAMBIAR URL
 
-    this.http
-      .post<any>(backendUrl, credentials) // Envía las credenciales al backend
-      .pipe(
-        tap((response) => {
-          // Maneja la respuesta del backend
-          if (response && response.token) {
-            // Si el backend devuelve un token JWT válido
-            // Se guarda el token JWT en el almacenamiento local
-            localStorage.setItem('token', response.token);
-            console.log('Inicio de sesión exitoso');
-          } else {
-            // Si el backend devuelve un error u otra respuesta inesperada
-            console.error('Error: No se recibió un token válido del servidor');
-          }
-        })
-      )
-      .subscribe(
-        () => {
-          // Maneja el caso de éxito de la solicitud al backend (opcional)
-        },
-        (error) => {
-          // Maneja el caso de error de la solicitud al backend
-          console.error('Error al iniciar sesión:', error);
+    return this.http.post<any>(backendUrl, credentials).pipe(
+      tap((response) => {
+        // Maneja la respuesta del backend
+        if (response && response.token) {
+          // Si el backend devuelve un token JWT válido
+          // Se guarda el token JWT en el almacenamiento local
+          localStorage.setItem('token', response.token);
+          console.log('Inicio de sesión exitoso');
+        } else {
+          // Si el backend devuelve un error u otra respuesta inesperada
+          console.error('Error: No se recibió un token válido del servidor');
         }
-      );
+      })
+    );
   }
 
   // Método para cerrar sesión
-  logout(): void {
+  logout() {
     // se elimina el token del almacenamiento local
     localStorage.removeItem('token');
+  }
+}
+*/
+  login(credentials: any): Observable<boolean> {
+    if (
+      credentials.email === 'andrescely@gmail.com' &&
+      credentials.password === 'algo'
+    ) {
+      return of(true);
+    } else {
+      return of(false);
+    }
   }
 }

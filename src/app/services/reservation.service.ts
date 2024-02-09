@@ -11,13 +11,25 @@ export class ReservationsService {
 
   constructor(private http: HttpClient) {}
 
-  createReservation(data: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/reservations`, data);
+  // Método para crear una nueva reserva
+  crearReserva(reserva: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl, reserva);
   }
 
+  // Método para obtener todas las reservas
   obtenerReservas(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/reservas`);
+    return this.http.get<any[]>(this.apiUrl);
   }
 
-  // Otros métodos relacionados con reservas
+  // Método para eliminar una reserva
+  eliminarReserva(id: number): Observable<any> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.delete<any>(url);
+  }
+
+  // Método para actualizar una reserva
+  actualizarReserva(id: number, reserva: any): Observable<any> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.put<any>(url, reserva);
+  }
 }
