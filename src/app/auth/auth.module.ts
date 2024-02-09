@@ -7,6 +7,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { MatInputModule } from '@angular/material/input';
     MatSidenavModule,
     MatDividerModule,
     MatButtonModule,
+    RouterModule,
   ],
 })
 export class AuthModule {}

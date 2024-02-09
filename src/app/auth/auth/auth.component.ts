@@ -8,6 +8,32 @@ import { Observable, of } from 'rxjs';
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss'],
 })
+export class AuthComponent {
+  credentials = {
+    email: 'andrescely@gmail.com',
+    password: '123456',
+  };
+
+  constructor(private router: Router, private authService: AuthService) {}
+
+  login(): void {
+    this.authService.login(this.credentials).subscribe(
+      (success) => {
+        if (success) {
+          // Si las credenciales son correctas, redirige al usuario
+          this.router.navigateByUrl('/dashboard/fincas/fincas');
+        } else {
+          // Si las credenciales son incorrectas, muestra un mensaje de error
+          console.error('Inicio de sesión fallido: credenciales incorrectas');
+        }
+      },
+      (error) => {
+        // Maneja errores de la solicitud de inicio de sesión
+        console.error('Error al iniciar sesión:', error);
+      }
+    );
+  }
+}
 /*export class AuthComponent {
   credentials: any = {}; // Definimos la propiedad credentials aquí
 
@@ -34,29 +60,3 @@ import { Observable, of } from 'rxjs';
   }
 }
 */
-export class AuthComponent {
-  credentials = {
-    email: 'andrescely@gmail.com',
-    password: 'algo',
-  };
-
-  constructor(private router: Router, private authService: AuthService) {}
-
-  login(): void {
-    this.authService.login(this.credentials).subscribe(
-      (success) => {
-        if (success) {
-          // Si el inicio de sesión es exitoso, redirigir al usuario a la página deseada
-          this.router.navigateByUrl('/dashboard/fincas/fincas');
-        } else {
-          // Si el inicio de sesión falla, mostrar un mensaje de error al usuario
-          console.error('Inicio de sesión fallido: credenciales incorrectas');
-        }
-      },
-      (error) => {
-        // Manejar errores de la solicitud de inicio de sesión
-        console.error('Error al iniciar sesión:', error);
-      }
-    );
-  }
-}

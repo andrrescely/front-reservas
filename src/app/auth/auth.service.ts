@@ -7,6 +7,18 @@ import { Observable, of, tap } from 'rxjs';
 })
 export class AuthService {
   constructor() {}
+  login(credentials: any): Observable<boolean> {
+    console.log('Credenciales recibidas:', credentials);
+    if (
+      credentials.email === 'andrescely@gmail.com' &&
+      credentials.password === '123456'
+    ) {
+      return of(true);
+    } else {
+      return of(false);
+    }
+  }
+}
   /*constructor(private http: HttpClient) {}
   // Método para verificar si el usuario está autenticado
   isAuthenticated(): boolean {
@@ -44,14 +56,4 @@ export class AuthService {
   }
 }
 */
-  login(credentials: any): Observable<boolean> {
-    if (
-      credentials.email === 'andrescely@gmail.com' &&
-      credentials.password === 'algo'
-    ) {
-      return of(true);
-    } else {
-      return of(false);
-    }
-  }
-}
+  
