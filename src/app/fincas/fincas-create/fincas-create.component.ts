@@ -7,6 +7,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./fincas-create.component.scss'],
 })
 export class FincasCreateComponent {
+rating: any;
+commentForm: any;
+submitComment() {
+throw new Error('Method not implemented.');
+}
   fincaForm: FormGroup;
 
   constructor(private fb: FormBuilder) {

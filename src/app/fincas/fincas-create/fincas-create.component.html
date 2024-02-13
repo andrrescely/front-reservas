@@ -1,18 +1,22 @@
-<div>
+<div class="container">
   <h2>Crear Nueva Finca</h2>
 
-  <form [formGroup]="fincaForm" (ngSubmit)="onSubmit()">
-    <label for="nombre">Nombre:</label>
-    <input type="text" id="nombre" formControlName="nombre">
+  <form [formGroup]="fincaForm" (ngSubmit)="onSubmit()" class="form">
+    <div class="form-group">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" formControlName="nombre" class="form-control">
+    </div>
 
-    <label for="imagen">URL de la Imagen:</label>
-    <input type="text" id="imagen" formControlName="imagen">
+    <div class="form-group">
+      <label for="imagen">URL de la Imagen:</label>
+      <input type="text" id="imagen" formControlName="imagen" class="form-control">
+    </div>
 
-    <label for="descripcion">Descripción:</label>
-    <textarea id="descripcion" formControlName="descripcion"></textarea>
+    <div class="form-group">
+      <label for="descripcion">Descripción:</label>
+      <textarea id="descripcion" formControlName="descripcion" class="form-control"></textarea>
+    </div>
 
-   
-
-    <button type="submit">Crear Finca</button>
+    <button type="submit" class="btn btn-primary">Crear Finca</button>
   </form>
 </div>
