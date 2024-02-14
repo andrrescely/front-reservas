@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  
 }
 
 .form-group {
@@ -15,11 +14,12 @@
 }
 
 button {
-  background: linear-gradient(to right, #89a535, #889661, #8ba04d) !important;
+  background: linear-gradient(to right, #49b675bb, #668070, #88978d) !important;
   color: #0c0911 !important;
-  margin-top: 16px;
+  font-size: 1rem !important;
+  margin-top: 10px;
 }
 button:disabled {
-    opacity: 0.5; 
-    cursor: not-allowed;
-  }
+  opacity: 0.5;
+  cursor: not-allowed;
+}
