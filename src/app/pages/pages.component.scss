@@ -3,7 +3,7 @@
 }
 
 mat-toolbar{
-  background: linear-gradient(to right, #235d7a, #2a3342, #1a1a2e);
+  background: linear-gradient(to right,  #46551a, #5A6340, #7B8D45);
   color: aliceblue;
 }
 
@@ -15,7 +15,7 @@ mat-sidenav{
   margin: 8px;
   width: 200px;
   border-right: none;
-  background: linear-gradient(to right, #245c8a, #2a3342, #1a1a2e);
+  background: linear-gradient(to right,  #7a9233, #89965d, #8ba04e) ;
   color: aliceblue;
   border-radius: 10px;
   padding: 16px;
@@ -38,7 +38,7 @@ mat-sidenav{
 .desingnation{
   margin-top: 2px;
   font-size: 0.7rem;
-  color: lightgray;
+  color: rgb(12, 11, 11);
 
 }
 .menu-button{

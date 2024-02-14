@@ -1,11 +1,11 @@
 mat-sidenav-container{
-  background: linear-gradient(to right, #181218, #2a3342, #1a1a2e);
+  background: linear-gradient(to right, #49B675, #466051, #303632);
   margin: 0;
   height: 100vh;
   display: flex;
 }
 mat-sidenav-content {
-  background: linear-gradient(to right, #181218, #2a3342, #1a1a2e);
+  background: linear-gradient(to right, #8fc4a5,#8da595, #77ad8f);
   margin: 0; 
 }
 mat-sidenav-container {
@@ -19,9 +19,9 @@ mat-sidenav-container {
 .content {
   width: 20%; 
   max-width: 800px;
-  height: calc(60vh); 
+  height: calc(50vh); 
   border-radius: 10px;
-  margin: 16px auto; 
+  margin: px auto; 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,7 +44,7 @@ mat-sidenav-container {
   margin-bottom: 16px; /* Ajusta el valor según tus necesidades */
 }
 .login-button {
-  background: linear-gradient(to right, #302430, #3a465c, #2d2d50) !important;
+  background: linear-gradient(to right, #53ad5f, #74c57f, #84af88) !important;
   color: #6f41c4 !important;
   font-size: 1rem !important;
 }
