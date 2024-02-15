@@ -12,14 +12,10 @@ const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: AuthComponent },
   { path: 'nosotros', component: FincasEditComponent },
-  {
-    path: 'dashboard',
-    component: PagesComponent,
-    children: [
+  {path: 'fincas',component:FincasEditComponent,canActivate:[AuthGuard ]},
+  {path: 'dashboard',component: PagesComponent,children: [
       {
-        path: 'fincas',
-        loadChildren: () =>
-          import('./fincas/fincas.module').then((m) => m.FincasModule),
+        path: 'fincas',loadChildren: () =>import('./fincas/fincas.module').then((m) => m.FincasModule),
       },
     ],
   },

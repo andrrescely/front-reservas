@@ -6,6 +6,7 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
 
 
@@ -13,22 +14,24 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router) {}
-
+  constructor(private cookieService: CookieService, private router: Router){}
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ):
-    | Observable<boolean | UrlTree>
-    | Promise<boolean | UrlTree>
-    | boolean
-    | UrlTree {
-    // Verifica si el usuario está autenticado utilizando el servicio AuthService
-    //if (this.authService.isAuthenticated()) {
-      //return true;
-    //} else {
-      // Si el usuario no está autenticado, redirige a la página de inicio de sesión
-      return this.router.createUrlTree(['/login']);
-    //}
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    return this.checkCookieSession();
+  }
+
+  checkCookieSession(): boolean{
+    try {
+      const token: boolean = this.cookieService.check('token');
+      if (!token) {
+        this.router.navigate(['/login'])
+      }
+      
+      return token;
+    } catch (e) {
+      console.log('token no encontrada, acceso denegado', e);
+      return false;
+    }
   }
 }

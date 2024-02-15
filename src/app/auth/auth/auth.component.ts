@@ -20,31 +20,42 @@ export class AuthComponent implements OnInit {
     this.router.navigateByUrl('/dashboard/fincas/fincas');
   }
 
-  errorSession: boolean = false;
-  formLogin: FormGroup = new FormGroup({});
+
+  errorSession: boolean = false
+  formLogin:FormGroup = new FormGroup({});
   ngOnInit(): void {
-    this.formLogin = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [
-        Validators.required,
-        Validators.minLength(6),
-        Validators.maxLength(12),
-      ]),
-    });
+    this.formLogin = new FormGroup(
+      {
+         email: new FormControl('',[
+          Validators.required,
+          Validators.email
+         ]),
+         password: new FormControl('',[
+          Validators.required,
+          Validators.minLength(6),
+          Validators.maxLength(12)
+            
+         ])
+      }
+      )
+    
+    
   }
   sendLogin(): void {
     const { email, password } = this.formLogin.value;
     this.authService.sendCredential(email, password).subscribe({
       next: (responseOk: any) => {
         const { tokenSession } = responseOk;
+        console.log('Token de sesión:', tokenSession);
         this.cookie.set('token', tokenSession, 1, '/');
-
+      
         console.log('Sesión iniciada correctamente', responseOk);
       },
       error: (error) => {
         this.errorSession = true;
         console.error('Ocurrió un error en tu email y/o tu password', error);
-      },
+      }
     });
   }
+
 }

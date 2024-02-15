@@ -1,16 +1,14 @@
 <div class="login-page">
-    <div class="form">
-      <form  (ngSubmit)="sendLogin()" [formGroup]="formLogin"   class="login-form">
-        <input formControlName="email" type="text" placeholder="Ingresa tu correo"/>
-        <input formControlName="password"type="password" placeholder="Ingresa tu constraseña"/>
-        <button > Iniciar sesión</button>
-        <p class="mesage"> Registrate <a href="#">aquí</a></p>
-      </form>
-    </div>
-    <div *ngIf="errorSession">
-          Ocurrio un error con tu email o password
-    </div>
-    <div>
-      <hr>Valido{{formLogin.valid}}
-    </div>
+  <div class="form">
+    <form (ngSubmit)="sendLogin()" [formGroup]="formLogin" class="login-form">
+      <input formControlName="email" type="text" placeholder="Ingresa tu correo"/>
+      <input formControlName="password" type="password" placeholder="Ingresa tu contraseña"/>
+      <button [disabled]="formLogin.invalid" class="login-button">Iniciar sesión</button>
+      <p class="message">¿No tienes una cuenta? <a href="#" class="register-link">Regístrate aquí</a></p>
+    </form>
+    <div *ngIf="errorSession" class="error-message">
+    Ocurrió un error con tu correo electrónico o contraseña.
   </div>
+  </div>
+  
+</div>
