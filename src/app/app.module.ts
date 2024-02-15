@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -16,6 +16,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FincasService } from './fincas/fincas.service';
 import { HttpClientModule } from '@angular/common/http';
 import { DateFormatPipe } from './date-format.pipe';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -36,8 +37,9 @@ import { DateFormatPipe } from './date-format.pipe';
     ReactiveFormsModule,
     MatSnackBarModule,
     HttpClientModule,
+    FormsModule,
   ],
-  providers: [ReservationsService, FincasService],
+  providers: [ReservationsService, FincasService, CookieService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

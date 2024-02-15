@@ -8,6 +8,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -21,6 +23,8 @@ import { RouterModule } from '@angular/router';
     MatDividerModule,
     MatButtonModule,
     RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
 })
 export class AuthModule {}

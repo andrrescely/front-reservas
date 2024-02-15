@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ReservationsService } from '../services/reservation.service';
+import { config } from 'rxjs';
 
 @Component({
   selector: 'app-reserva-dialog',
@@ -62,7 +63,7 @@ export class ReservaDialogComponent {
 
   mostrarSnackBar(): void {
     this.snackBar.open('¡Reserva exitosa!', 'Cerrar', {
-      duration: 3000, // Duración en milisegundos
+      duration: 4000, // Duración en milisegundos
     });
   }
 
@@ -94,7 +95,8 @@ export class ReservaDialogComponent {
   }
   mostrarAgradecimientoSnackBar(): void {
     this.snackBar.open('¡Gracias por su reserva!', 'Cerrar', {
-      duration: 3000,
+      duration: 4000,
+      
     });
   }
 }

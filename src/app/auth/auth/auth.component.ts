@@ -1,62 +1,50 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
-import { Observable, of } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss'],
 })
-export class AuthComponent {
-  credentials = {
-    email: 'andrescely@gmail.com',
-    password: '123456',
-  };
+export class AuthComponent implements OnInit {
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private cookie: CookieService
+  ) {}
 
-  constructor(private router: Router, private authService: AuthService) {}
+  login() {
+    this.router.navigateByUrl('/dashboard/fincas/fincas');
+  }
 
-  login(): void {
-    this.authService.login(this.credentials).subscribe(
-      (success) => {
-        if (success) {
-          // Si las credenciales son correctas, redirige al usuario
-          this.router.navigateByUrl('/dashboard/fincas/fincas');
-        } else {
-          // Si las credenciales son incorrectas, muestra un mensaje de error
-          console.error('Inicio de sesión fallido: credenciales incorrectas');
-        }
+  errorSession: boolean = false;
+  formLogin: FormGroup = new FormGroup({});
+  ngOnInit(): void {
+    this.formLogin = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(6),
+        Validators.maxLength(12),
+      ]),
+    });
+  }
+  sendLogin(): void {
+    const { email, password } = this.formLogin.value;
+    this.authService.sendCredential(email, password).subscribe({
+      next: (responseOk: any) => {
+        const { tokenSession } = responseOk;
+        this.cookie.set('token', tokenSession, 1, '/');
+
+        console.log('Sesión iniciada correctamente', responseOk);
       },
-      (error) => {
-        // Maneja errores de la solicitud de inicio de sesión
-        console.error('Error al iniciar sesión:', error);
-      }
-    );
+      error: (error) => {
+        this.errorSession = true;
+        console.error('Ocurrió un error en tu email y/o tu password', error);
+      },
+    });
   }
 }
-/*export class AuthComponent {
-  credentials: any = {}; // Definimos la propiedad credentials aquí
-
-  constructor(private router: Router, private authService: AuthService) {}
-
-  login(): void {
-    // Verificar si las credenciales no están vacías
-    if (!this.credentials.username || !this.credentials.password) {
-      console.log('Por favor, ingresa tu nombre de usuario y contraseña');
-      return;
-    }
-
-    // Llamar al método de login del servicio de autenticación
-    this.authService.login(this.credentials).subscribe(
-      () => {
-        // Redireccionar al usuario al dashboard una vez que haya iniciado sesión correctamente
-        this.router.navigateByUrl('/dashboard/fincas/fincas');
-      },
-      (error: any) => {
-        // Manejar cualquier error que ocurra durante el inicio de sesión
-        console.log('Error iniciando sesión', error);
-      }
-    );
-  }
-}
-*/
