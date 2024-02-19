@@ -17,7 +17,7 @@ export class FincasCreateComponent {
   ) {
     this.fincaForm = this.fb.group({
       nombre: ['', [Validators.required]],
-      descripcion: ['', [Validators.required]],
+      precio: ['', [Validators.required]],
       capacidad: ['', [Validators.required]],
       direccion: ['', [Validators.required]],
     });
@@ -29,11 +29,11 @@ export class FincasCreateComponent {
       this.ReservaServiceService.crearReserva(reservaData).subscribe(
         (response: any) => {
           console.log('Respuesta del servidor:', response);
-          // Aquí puedes agregar lógica adicional después de recibir una respuesta exitosa del servidor
+          
         },
         (error: HttpErrorResponse) => {
           console.error('Error al enviar el formulario:', error);
-          // Aquí puedes manejar el error de acuerdo a tus necesidades
+          
         }
       );
     }

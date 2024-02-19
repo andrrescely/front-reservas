@@ -13,10 +13,10 @@ import { ReservaDialogComponent } from './reserva-dialog/reserva-dialog.componen
 import { BoldInfoDirective } from './bold-info.directive';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
  import { ReservationsService } from './services/reservation.service';
-import { FincasService } from './fincas/fincas.service';
 import { HttpClientModule } from '@angular/common/http';
 import { DateFormatPipe } from './date-format.pipe';
 import { CookieService } from 'ngx-cookie-service';
+import { FincaService } from './fincas/fincas.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +39,7 @@ import { CookieService } from 'ngx-cookie-service';
     HttpClientModule,
     FormsModule,
   ],
-  providers: [ReservationsService, FincasService, CookieService],
+  providers: [ReservationsService, FincaService, CookieService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

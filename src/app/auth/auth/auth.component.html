@@ -1,6 +1,6 @@
 <div class="login-page">
   <div class="form">
-    <form (ngSubmit)="sendLogin()" [formGroup]="formLogin" class="login-form">
+    <form (ngSubmit)="sendLogin(formLogin.value.email, formLogin.value.password)" [formGroup]="formLogin" class="login-form">
       <input formControlName="email" type="text" placeholder="Ingresa tu correo"/>
       <input formControlName="password" type="password" placeholder="Ingresa tu contraseña"/>
       <button [disabled]="formLogin.invalid" class="login-button">Iniciar sesión</button>

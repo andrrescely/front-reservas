@@ -1,7 +1,7 @@
 // fincas-details.component.ts
 import { Component } from '@angular/core';
-import { FincasService } from '../fincas.service'; 
-import { ReservationsService } from 'src/app/services/reservation.service'; 
+import { FincaService } from '../fincas.service'; 
+
 
 @Component({
   selector: 'app-fincas-details',
@@ -13,10 +13,7 @@ export class FincasDetailsComponent {
   reserva: any;
   reservaciones: any;
 
-  constructor(
-    private fincasService: FincasService,
-    private reservationsService: ReservationsService
-  ) {}
+  constructor(private FincaService: FincaService) {}
 
   actualizarReserva(datosReserva: any) {
     this.reserva = datosReserva;

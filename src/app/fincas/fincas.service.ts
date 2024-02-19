@@ -1,4 +1,3 @@
-// fincas.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -6,14 +5,12 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class FincasService {
-  private apiUrl = 'URL_DEL_BACKEND'; // URL DE MI BACKEND
+export class FincaService {
+  private apiUrl = 'http://localhost:8080/api/v1';
 
   constructor(private http: HttpClient) {}
 
-  obtenerFincas(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/fincas`);
+  crearFinca(fincaData: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl, fincaData);
   }
-
-  
 }

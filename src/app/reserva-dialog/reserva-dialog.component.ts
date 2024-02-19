@@ -2,7 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ReservationsService } from '../services/reservation.service';
+
 import { config } from 'rxjs';
 
 @Component({
@@ -20,7 +20,7 @@ export class ReservaDialogComponent {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
-    private ReservationsService: ReservationsService
+    
     
   ) {
     this.fincaForm = this.fb.group({
