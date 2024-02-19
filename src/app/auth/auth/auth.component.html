@@ -4,8 +4,19 @@
       <input formControlName="email" type="text" placeholder="Ingresa tu correo"/>
       <input formControlName="password" type="password" placeholder="Ingresa tu contraseña"/>
       <button [disabled]="formLogin.invalid" class="login-button">Iniciar sesión</button>
-      <p class="message">¿No tienes una cuenta? <a href="#" class="register-link">Regístrate aquí</a></p>
+      <p class="message">¿No tienes una cuenta? <a href="#" class="register-link" (click)="showRegisterForm($event)">Regístrate aquí</a></p>
     </form>
+    <form *ngIf="registerMode" (ngSubmit)="sendRegistration(formRegister.value.email, formRegister.value.password)" [formGroup]="formRegister" class="register-form">
+  <input formControlName="email" type="text" placeholder="Ingresa tu correo"/>
+  <input formControlName="password" type="password" placeholder="Ingresa tu contraseña"/>
+  <button [disabled]="formRegister.invalid" class="register-button">Registrarse</button>
+  <p class="message">¿Ya tienes una cuenta? <a href="#" class="login-link" (click)="showLoginForm($event)">Inicia sesión aquí</a></p>
+</form>
+
+
+    
+
+
     <div *ngIf="errorSession" class="error-message">
     Ocurrió un error con tu correo electrónico o contraseña.
   </div>

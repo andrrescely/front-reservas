@@ -6,21 +6,28 @@ import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-  private readonly URL  = enviroment.api
+  private readonly URL = enviroment.api;
 
-  constructor(private http: HttpClient, private cookies:CookieService, private router:Router) { }
-  sendCredential(email: string,password:string ):Observable<any>
-  {
-    const user  ={email ,password}
-    return this.http.post(`${this.URL}/auth/authenticate`,user,{responseType:'text'})
-    .pipe(
-      tap((responseOK:string) => {
-          this.cookies.set('token_service', responseOK,  1, '/')  
-          this.router.navigate(['dashboard/fincas/fincas']);       
-      })
-      )
+  constructor(
+    private http: HttpClient,
+    private cookies: CookieService,
+    private router: Router
+  ) {}
+  sendCredential(email: string, password: string): Observable<any> {
+    const user = { email, password };
+    return this.http
+      .post(`${this.URL}/auth/authenticate`, user, { responseType: 'text' })
+      .pipe(
+        tap((responseOK: string) => {
+          this.cookies.set('token_service', responseOK, 1, '/');
+          this.router.navigate(['dashboard/fincas/fincas']);
+        })
+      );
+  }
+  registerUser(userData: any): Observable<any> {
+    return this.http.post(`${this.URL}/register`, userData);
   }
 }
