@@ -50,7 +50,7 @@ export class ReservaDialogComponent {
         reservaFormValue: this.reservaForm.value,
       };
 
-      // Realiza más acciones antes de cerrar el cuadro de diálogo
+      
       console.log('Datos de reserva:', reservaData);
 
       // Cierra el modal y pasa los datos
@@ -63,7 +63,7 @@ export class ReservaDialogComponent {
 
   mostrarSnackBar(): void {
     this.snackBar.open('¡Reserva exitosa!', 'Cerrar', {
-      duration: 4000, // Duración en milisegundos
+      duration: 4000, // Duración
     });
   }
 

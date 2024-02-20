@@ -1,4 +1,3 @@
-// fincas-details.component.ts
 import { Component } from '@angular/core';
 import { FincaService } from '../fincas.service'; 
 
